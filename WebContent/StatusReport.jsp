@@ -13,7 +13,7 @@
 <form action="ListServlet" method="post">
                 <input type="hidden" name="option" value="4">
                 <input type="hidden" name="listId" value="${item.id}">
-                <input type="submit" value="I'm done!">
+                <input type="submit" value="Back">
                 </form>
                 
 </body>

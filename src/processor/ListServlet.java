@@ -15,6 +15,7 @@ import processor.ProcessList;
 import processor.ProcessStatus;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -121,10 +122,10 @@ public class ListServlet extends HttpServlet {
 			cal.set(year, month-1, date);;
 			Date d = cal.getTime();
 			pl.AddItem(userId, item, d);
-			List<ToDoList> list = null;
-			list = pl.getList((int) user.getId());
-			session.setAttribute("ToDoList", list);
-			request.getRequestDispatcher("/ListManagement.jsp").forward(request, response);
+			request.getRequestDispatcher("/ListAction.jsp").forward(request, response);
+		}else if (request.getParameter("option").equals("6")) {
+			
+			request.getRequestDispatcher("/ListAction.jsp").forward(request, response);
 		}
 
 	}

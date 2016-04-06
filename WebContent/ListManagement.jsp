@@ -56,18 +56,9 @@ th {
 		</c:forEach>
 	</table>
 	<c:out value="${done}"/>
-<h4>Add things to do here: </h4><br/>	
-<form action="Listservlet" method="post">
-		<input type="hidden" name="option" value="5">
-        <input type="hidden" name="userId" value="${userId}">
-			<label for="item">What do you want to do?</label> 
-			<input id="item" name="item" value="${param.username}">
-    <br/>
-    <label for="username">When would you like to finish?</label><br/> 
-		Month:<input id="month" name="month" value="${param.month}"><br>
-        Date:<input id="date" name="date" value="${param.date}"><br>
-        Year:<input id="year" name="year" value="${param.year}"><br>
-	<input type="submit" value="Add">
+<form action="ListServlet" method="post">
+		<input type="hidden" name="option" value="6">
+	<input type="submit" value="Add new to list">
 	
 	</form>
 </body>

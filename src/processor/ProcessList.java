@@ -44,11 +44,14 @@ public void AddItem(int userId,String item, Date deadline){
 	this.userId=userId;
 	this.item=item;
 	this.deadline=deadline;
+	this.listId=getId()+1;
+	ProcessStatus ps=new ProcessStatus();
 	BigDecimal userid=new BigDecimal(userId);
-	row.setId((long)(getId()+1));
+	row.setId((long)listId);
 	row.setUserid(userid);
 	row.setItem(item);
 	row.setDeadline(deadline);
+	ps.AddStatus(listId);
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
 	EntityTransaction trans = em.getTransaction();
 	trans.begin();
@@ -66,7 +69,7 @@ public void AddItem(int userId,String item, Date deadline){
 
 public List getList(int userId){
 	EntityManager em = DBUtil.getEmFactory().createEntityManager();
-	String qString = "Select p from ToDoList p where p.userid= :userid";
+	String qString = "Select p from ToDoList p where p.userid= :userid ORDER BY p.id ASC";
 	TypedQuery<ToDoList> q = em.createQuery(qString, model.ToDoList.class);
 	q.setParameter("userid", userId);
 	try {
